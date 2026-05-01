@@ -32,7 +32,7 @@ def admincreate():
         adminemail=request.form['email']
         adminpassword=request.form['password']
         adminaddress=request.form['address']
-        adminagree=request.form['agree']
+        adminagree=request.form.get('agree')
         try:
             cursor=mydb.cursor(buffered=True)
             cursor.execute('select count(email) from admindata where email=%s',[adminemail])
@@ -48,7 +48,7 @@ def admincreate():
                 
                 subject='Use otp for Ecommee App verification'
                 body=f'otp for Admin registration : {gotp}'
-                send_mail(to=adminemail,subject=subject,body=body)
+                print("OTP:", gotp)
                 flash(f'OTP has sent to given email{adminemail}')
                 return redirect(url_for('adminotpverify',enadmin=endata(data=admindata)))
             elif count_email[0]==1:
