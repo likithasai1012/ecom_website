@@ -251,4 +251,5 @@ def delete_item(itemid):
     else:
         flash('To delete pls login')
         return redirect(url_for('adminlogin'))
-app.run(debug=True,use_reloader=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
