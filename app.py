@@ -6,7 +6,15 @@ from cmail import send_mail
 from stoken import endata,dedata
 from mysql.connector import (connection)
 from itsdangerous import URLSafeTimedSerializer,SignatureExpired
-mydb=connection.MySQLConnection(user='root',host='localhost',password='admin',db='ecommee')
+import mysql.connector
+
+mydb = mysql.connector.connect(
+    host="switchyard.proxy.rlwy.net",
+    user="root",
+    password="YOUR_PASSWORD",
+    database="railway",
+    port=44445
+)
 app=Flask(__name__)
 app.secret_key=b'a6*\xf9\xf6'
 @app.route('/')
