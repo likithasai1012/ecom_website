@@ -8,12 +8,13 @@ from mysql.connector import (connection)
 from itsdangerous import URLSafeTimedSerializer,SignatureExpired
 import mysql.connector
 
+
 mydb = mysql.connector.connect(
-    host="switchyard.proxy.rlwy.net",
-    user="root",
-    password="YOUR_PASSWORD",
-    database="railway",
-    port=44445
+    host=os.getenv("MYSQLHOST"),
+    user=os.getenv("MYSQLUSER"),
+    password=os.getenv("MYSQLPASSWORD"),
+    database=os.getenv("MYSQLDATABASE"),
+    port=int(os.getenv("MYSQLPORT"))
 )
 app=Flask(__name__)
 app.secret_key=b'a6*\xf9\xf6'
