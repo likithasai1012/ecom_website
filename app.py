@@ -14,7 +14,7 @@ mydb = mysql.connector.connect(
     user=os.getenv("MYSQLUSER"),
     password=os.getenv("MYSQLPASSWORD"),
     database=os.getenv("MYSQLDATABASE"),
-    port=44445
+    port=int(os.getenv("MYSQLPORT", 3306))
 )
 app=Flask(__name__)
 app.secret_key=b'a6*\xf9\xf6'
